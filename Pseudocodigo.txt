@@ -1,0 +1,108 @@
+INICIO
+    // INICIO DEL JUEGO
+    MOSTRAR "Bienvenido a la historia titulada: En Misapatos"
+    MOSTRAR descripción del juego
+    
+    // PRIMERA DECISIÓN
+    REPETIR
+        MOSTRAR escenario de despertar
+        MOSTRAR opciones:
+            a) Prepararse rápido
+            b) Tomarse calma
+            c) Dormir 15 min más
+        LEER eleccion (dlg_1)
+        
+        SI eleccion NO ES (a, b o c) ENTONCES
+            MOSTRAR "Opción no válida"
+        FIN SI
+    HASTA QUE eleccion SEA válida
+
+    SEGÚN eleccion HACER
+        CASO 'a': // RAMA IR RÁPIDO A LA U
+            REPETIR
+                MOSTRAR escenario de llegar a la universidad
+                MOSTRAR opciones:
+                    a) Ir al aula
+                    b) Desayunar en la U
+                    c) Ir a biblioteca
+                LEER eleccion (dlg_2)
+                
+                SI eleccion NO ES válida ENTONCES
+                    MOSTRAR error
+                FIN SI
+            HASTA QUE eleccion SEA válida
+            
+            SEGÚN eleccion HACER
+                CASO 'a':
+                    MOSTRAR final "Almuerzo feliz"
+                CASO 'b':
+                    REPETIR
+                        MOSTRAR opciones de desayuno
+                        LEER eleccion (dlg_3)
+                    HASTA QUE eleccion SEA válida
+                    MOSTRAR final "Almuerzo feliz"
+                CASO 'c':
+                    REPETIR
+                        MOSTRAR encuentro con amigo
+                        MOSTRAR opciones de interacción
+                        LEER eleccion (dlg_3)
+                    HASTA QUE eleccion SEA válida
+                    MOSTRAR final "Cuatro mosqueteros"
+            FIN SEGÚN
+            
+        CASO 'b': // RAMA CON CALMA
+            REPETIR
+                MOSTRAR escenario en casa
+                MOSTRAR opciones:
+                    a) No hacer nada
+                    b) Alistarse calmado
+                    c) Preparar mochila
+                LEER eleccion (dlg_3)
+            HASTA QUE eleccion SEA válida
+            
+            SEGÚN eleccion HACER
+                CASO 'a':
+                    MOSTRAR animación puntos suspensivos
+                    MOSTRAR final "Procrastinación maestra"
+                CASO 'b':
+                    // Implementar esta rama
+                CASO 'c':
+                    // Implementar esta rama
+            FIN SEGÚN
+            
+        CASO 'c': // RAMA DORMIR MÁS
+            intentos = 0
+            max_intentos = 3
+            
+            REPETIR
+                MOSTRAR "¿Dormir 10 min más o levantarse?"
+                LEER eleccion (dlg_4)
+            HASTA QUE eleccion SEA válida
+            
+            SI eleccion ES 'a' ENTONCES
+                MIENTRAS intentos < max_intentos HACER
+                    MOSTRAR contador intentos
+                    MOSTRAR opciones:
+                        a) Seguir durmiendo
+                        b) Levantarse
+                    LEER opcion
+                    
+                    SI opcion ES 'a' ENTONCES
+                        intentos = intentos + 1
+                        SI intentos >= max_intentos ENTONCES
+                            MOSTRAR final malo "Sueños malos"
+                        FIN SI
+                    SINO SI opcion ES 'b' ENTONCES
+                        MOSTRAR final "Almuerzo feliz"
+                        TERMINAR BUCLE
+                    SINO
+                        MOSTRAR error opción inválida
+                    FIN SI
+                FIN MIENTRAS
+            SINO
+                MOSTRAR final "Almuerzo feliz"
+            FIN SI
+    FIN SEGÚN
+    
+    MOSTRAR mensaje de fin de juego
+FIN
